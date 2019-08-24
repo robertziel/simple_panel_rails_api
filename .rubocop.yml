@@ -1,0 +1,66 @@
+AllCops:
+  Exclude:
+    - bin/*
+    - config/**/*
+    - db/**/*
+    - log/**/*
+    - public/**/*
+    - storage/**/*
+    - tmp/**/*
+    - vendor/**/*
+
+Documentation:
+  Enabled: false
+
+ClassAndModuleChildren:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - 'db/migrate/**/*'
+    - 'config/**/*'
+    - 'spec/**/*.rb'
+Metrics/LineLength:
+  Max: 100
+  Exclude:
+    - 'spec/**/*'
+Metrics/AbcSize:
+  Exclude:
+    - 'db/migrate/**/*'
+Metrics/MethodLength:
+  Enabled: false
+
+MethodCalledOnDoEndBlock:
+  Enabled: true
+  Exclude:
+    - 'spec/**/*'
+
+PredicateName:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/Lambda:
+  Enabled: false
+Style/NestedParenthesizedCalls:
+  Enabled: false
+
+Layout/AlignParameters:
+  Enabled: false
+Layout/AlignHash:
+  Enabled: false
+Layout/AccessModifierIndentation:
+  Enabled: false
+Layout/CommentIndentation:
+  Enabled: false
+Layout/MultilineMethodCallIndentation:
+  Enabled: false
+Layout/MultilineMethodCallBraceLayout:
+  Enabled: false
+Layout/EmptyLinesAroundClassBody:
+  Enabled: false
+Layout/DotPosition:
+  EnforcedStyle: trailing
+
+Bundler/OrderedGems:
+  Enabled: false
