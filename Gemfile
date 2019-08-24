@@ -11,6 +11,10 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'puma', '~> 4.0.1'
 
+# API
+
+gem 'grape'
+
 # Frontend
 
 gem 'bootstrap', '~> 4.3.1'
