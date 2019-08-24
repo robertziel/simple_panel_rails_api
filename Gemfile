@@ -14,6 +14,8 @@ gem 'puma', '~> 4.0.1'
 # API
 
 gem 'grape'
+gem 'grape-swagger'
+gem 'grape-swagger-rails'
 
 # Frontend
 

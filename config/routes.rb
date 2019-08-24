@@ -1,3 +1,6 @@
 Rails.application.routes.draw do
-  mount API::Base, at: '/api'
+  namespace :api, path: '/api' do
+    mount API::Base, at: '/'
+    mount GrapeSwaggerRails::Engine => '/docs'
+  end
 end
