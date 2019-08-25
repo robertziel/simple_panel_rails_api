@@ -81,9 +81,6 @@ PreCommit:
     exclude:
       - vendor/assets/**/*
 
-  TravisLint:
-    enabled: true
-
   XmlLint:
     enabled: true
 
