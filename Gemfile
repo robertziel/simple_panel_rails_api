@@ -5,7 +5,7 @@ ruby File.read(File.expand_path('.ruby-version', __dir__)).chomp
 
 # CORE
 
-gem 'rails', '~> 5.2.3'
+gem 'rails', '~> 6.0.0'
 gem 'pg', '>= 0.18', '< 2.0'
 
 gem 'bootsnap', '>= 1.1.0', require: false

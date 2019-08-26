@@ -4,7 +4,7 @@ describe API::Welcome do
   it 'should be success' do
     get '/api/welcome'
 
-    expect(response).to be_success
+    expect(response.status).to eq 200
 
     json = JSON.parse(response.body)
     expect(json['title']).not_to be_nil
