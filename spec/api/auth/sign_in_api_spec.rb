@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe API::Auth::SignIn do
+describe Auth::SignInAPI do
   let!(:user) { create(:user) }
 
   describe 'POST sign_in' do

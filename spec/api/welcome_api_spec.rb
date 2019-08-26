@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe API::Welcome do
+describe WelcomeAPI do
   it 'should be success' do
     get '/api/welcome'
 
