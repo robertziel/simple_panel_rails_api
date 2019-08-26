@@ -6,7 +6,7 @@ describe API::Welcome do
 
     expect(response).to be_success
 
-    json = JSON.parse(response.body)
+    json = response.body.to_json
     expect(json['title']).not_to be_nil
     expect(json['message']).not_to be_nil
   end

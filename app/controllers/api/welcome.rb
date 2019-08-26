@@ -1,5 +1,5 @@
 module API
-  class Welcome < Grape::API
+  class Welcome < Base
     format :json
 
     resource :welcome do
