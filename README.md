@@ -28,3 +28,9 @@ User authentication:
   * account is locked after N unsuccessful login attempts, then unlocked by token link sent via email
   * forgotten password token link sent via email
   * add last login IP etc.
+
+To do:
+* Generate authentication token
+* Sign out
+* Make sure password is hidden in params
+* Profile panel endpoints
