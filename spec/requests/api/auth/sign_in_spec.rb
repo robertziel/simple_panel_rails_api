@@ -18,10 +18,15 @@ describe API::Auth::SignIn do
         expect(response.status).to eq 200
       end
 
-      it 'should return authentication token' do
-        subject
-        json = response.body.to_json
-        expect(json['authentication_token']).not_to be_nil
+      it 'should return new authentication token' do
+        expect { subject }.to change(user.authentication_tokens, :count)
+
+        json = JSON.parse(response.body)
+        expect(
+          json['authentication_token']
+        ).to eq(
+          user.authentication_tokens.last.token
+        )
       end
     end
 
@@ -37,7 +42,7 @@ describe API::Auth::SignIn do
 
       it 'should return error message' do
         subject
-        json = response.body.to_json
+        json = JSON.parse(response.body)
         expect(json['error_message']).not_to be_nil
       end
     end

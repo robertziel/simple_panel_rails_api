@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   has_secure_password
 
+  has_many :authentication_tokens
+
   before_create :set_username
 
   validates :email, presence: true, uniqueness: true,

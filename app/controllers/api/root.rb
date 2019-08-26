@@ -1,6 +1,8 @@
 module API
   class Root < Grape::API
-    mount Auth::SignIn => '/auth'
+    namespace :auth do
+      mount Auth::SignIn
+    end
     mount Welcome
 
     add_swagger_documentation(
