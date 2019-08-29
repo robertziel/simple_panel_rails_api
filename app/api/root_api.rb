@@ -2,6 +2,7 @@ class RootAPI < Grape::API
   namespace :auth do
     mount Auth::SignInAPI
   end
+  mount CurrentUserAPI
   mount WelcomeAPI
 
   add_swagger_documentation(

@@ -11,7 +11,7 @@ class AuthenticationToken < ApplicationRecord
 
   def generate_token
     loop do
-      token = SecureRandom.hex(10)
+      token = SecureRandom.hex
       break token unless self.class.where(token: token).exists?
     end
   end

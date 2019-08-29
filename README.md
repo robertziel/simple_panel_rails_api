@@ -5,10 +5,10 @@
 
 # SIMPLE PANEL RAILS API
 
-REACT CLIENT repository:
+#### REACT CLIENT repository:
 https://github.com/robertziel/simple_panel_react_client
 
-About service:
+#### About service:
 * Grape API: `/api`
 * Swagger documentation: `/api/docs`
 
@@ -16,7 +16,7 @@ Seed sample user `rake db:seed`:
 * email: `hello@robertz.co`
 * password: `12345678`
 
-User authentication:
+#### User authentication:
 * written from scratch, only `bcrypt` gem is used
   * based on my previous project:
   https://github.com/robertziel/devise_from_scratch
@@ -29,8 +29,5 @@ User authentication:
   * forgotten password token link sent via email
   * add last login IP etc.
 
-To do:
-* Generate authentication token
-* Sign out
-* Make sure password is hidden in params
-* Profile panel endpoints
+#### To do:
+https://github.com/robertziel/simple_panel_rails_backend/projects/1
