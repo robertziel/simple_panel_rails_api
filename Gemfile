@@ -16,6 +16,7 @@ gem 'puma', '~> 4.0.1'
 gem 'grape'
 gem 'grape-swagger'
 gem 'grape-swagger-rails'
+gem 'rack-cors'
 
 # Frontend
 

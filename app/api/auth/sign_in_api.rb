@@ -10,7 +10,7 @@ module Auth
         requires :password, type: String, desc: 'User password'
       end
 
-      post '' do
+      post do
         user = User.find_by_email(params[:email])
         if user&.authenticate(params[:password])
           authentication_token = user.authentication_tokens.create!

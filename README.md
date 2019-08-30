@@ -16,6 +16,9 @@ Seed sample user `rake db:seed`:
 * email: `hello@robertz.co`
 * password: `12345678`
 
+#### ENV
+`CORS_ALLOWED_ORIGINS` - if empty `localhost:3000` is used as default
+
 #### User authentication:
 * written from scratch, only `bcrypt` gem is used
   * based on my previous project:
