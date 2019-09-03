@@ -1,6 +1,7 @@
 class RootAPI < Grape::API
   namespace :auth do
     mount Auth::SignInAPI
+    mount Auth::SignOutAPI
   end
   mount CurrentUserAPI
   mount WelcomeAPI

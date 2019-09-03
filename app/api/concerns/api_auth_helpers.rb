@@ -15,9 +15,14 @@ module ApiAuthHelpers
       error!('Unauthorized. Invalid or expired token.', 401) unless current_user
     end
 
+    def current_authentication_token
+      @current_authentication_token ||=
+        AuthenticationToken.valid.find_by_token(params[:authentication_token])
+    end
+
     def current_user
       @current_user ||= begin
-        token = AuthenticationToken.valid.find_by_token(params[:authentication_token])
+        token = current_authentication_token
         token ? token.user : false
       end
     end

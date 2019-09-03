@@ -19,7 +19,7 @@ describe Auth::SignInAPI do
       end
 
       it 'should return new authentication token' do
-        expect { subject }.to change(user.authentication_tokens, :count)
+        expect { subject }.to change { user.authentication_tokens.count }.by(1)
 
         json = JSON.parse(response.body)
         expect(
