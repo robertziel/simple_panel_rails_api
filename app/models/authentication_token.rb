@@ -1,9 +1,18 @@
 class AuthenticationToken < ApplicationRecord
   belongs_to :user
 
+  before_create :set_expires_at
   before_create :set_token
 
+  def expire!
+    update_columns(expires_at: Time.zone.now)
+  end
+
   private
+
+  def set_expires_at
+    self.expires_at = Time.zone.now + 1.day
+  end
 
   def set_token
     self.token = generate_token

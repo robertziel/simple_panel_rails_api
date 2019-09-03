@@ -4,6 +4,30 @@ describe AuthenticationToken do
   let!(:authentication_token) { create(:authentication_token) }
   let(:authentication_token_build) { build(:authentication_token) }
 
+  describe '#expire!' do
+    it 'should change expires at to now' do
+      expires_at = authentication_token.expires_at
+      authentication_token.expire!
+      expect(authentication_token.expires_at).not_to eq expires_at
+    end
+  end
+
+  describe '#set_expires_at' do
+    context 'record is new' do
+      it 'should set expires at' do
+        expect(authentication_token.expires_at).not_to be_nil
+      end
+    end
+
+    context 'record persisted' do
+      it 'should not change expires at' do
+        expires_at = authentication_token.expires_at
+        authentication_token.save!
+        expect(authentication_token.expires_at).to eq expires_at
+      end
+    end
+  end
+
   describe '#set_token' do
     context 'record is new' do
       it 'should set new token' do
@@ -16,6 +40,8 @@ describe AuthenticationToken do
           authentication_token.token
         end
         authentication_token_build.save!
+        expect(authentication_token_build.token).
+          not_to eq authentication_token.token
       end
     end
 
