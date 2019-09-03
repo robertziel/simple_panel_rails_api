@@ -4,6 +4,34 @@ describe AuthenticationToken do
   let!(:authentication_token) { create(:authentication_token) }
   let(:authentication_token_build) { build(:authentication_token) }
 
+  describe 'scopes' do
+    describe '#valid' do
+      subject do
+        described_class.valid.count
+      end
+
+      context 'when expires_at is in the future' do
+        before do
+          authentication_token.update_columns(expires_at: Time.zone.now + 1.day)
+        end
+
+        it 'should return the record' do
+          expect(subject).to eq 1
+        end
+      end
+
+      context 'when expires_at is in the past' do
+        before do
+          authentication_token.update_columns(expires_at: Time.zone.now)
+        end
+
+        it 'should not return the record' do
+          expect(subject).to eq 0
+        end
+      end
+    end
+  end
+
   describe '#expire!' do
     it 'should change expires at to now' do
       expires_at = authentication_token.expires_at

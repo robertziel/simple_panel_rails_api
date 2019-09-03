@@ -4,6 +4,8 @@ class AuthenticationToken < ApplicationRecord
   before_create :set_expires_at
   before_create :set_token
 
+  scope :valid, -> { where('expires_at > ?', Time.zone.now) }
+
   def expire!
     update_columns(expires_at: Time.zone.now)
   end
