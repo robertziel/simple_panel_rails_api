@@ -4,10 +4,10 @@ describe CurrentUserAPI do
   let!(:user) { create(:user) }
 
   describe 'GET current_user' do
-    let(:params) { {} }
+    let(:headers) { {} }
 
     subject do
-      get '/api/current_user', params: params
+      get '/api/current_user', headers: headers
     end
 
     include_context :should_check_valid_authentication_token

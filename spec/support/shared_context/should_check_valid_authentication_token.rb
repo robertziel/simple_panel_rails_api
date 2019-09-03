@@ -3,7 +3,7 @@ shared_context :should_check_valid_authentication_token do
   let(:token) { authentication_token.token }
 
   before do
-    params.merge!(authentication_token: token)
+    headers.merge! 'Authentication-Token': token
   end
 
   context 'when invalid authentication_token' do
@@ -19,7 +19,7 @@ shared_context :should_check_valid_authentication_token do
     end
 
     context 'when token does not exist' do
-      let(:token) { 'wrong_token' }
+      let(:token) { nil }
 
       include_examples :should_not_be_authorized
     end

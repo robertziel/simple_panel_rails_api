@@ -8,10 +8,8 @@ class CurrentUserAPI < BaseAPI
   end
 
   resource :current_user do
-    desc 'Get current_user'
-
-    params do
-      use :authentication_token
+    desc 'Get current_user' do
+      headers GrapeSwaggerRails.options.authentication_token_header_docs
     end
 
     get do

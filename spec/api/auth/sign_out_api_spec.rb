@@ -4,10 +4,10 @@ describe Auth::SignOutAPI do
   let!(:user) { create(:user) }
 
   describe 'GET current_user' do
-    let(:params) { {} }
+    let(:headers) { {} }
 
     subject do
-      delete '/api/auth/sign_out', params: params
+      delete '/api/auth/sign_out', headers: headers
     end
 
     include_context :should_check_valid_authentication_token

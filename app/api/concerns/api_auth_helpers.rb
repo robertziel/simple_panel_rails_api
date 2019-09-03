@@ -6,10 +6,6 @@ module ApiAuthHelpers
     include HelperMethods
   end
 
-  params :authentication_token do
-    requires :authentication_token, type: String, desc: 'Authentication token'
-  end
-
   module HelperMethods
     def authenticate!
       error!('Unauthorized. Invalid or expired token.', 401) unless current_user
@@ -17,7 +13,7 @@ module ApiAuthHelpers
 
     def current_authentication_token
       @current_authentication_token ||=
-        AuthenticationToken.valid.find_by_token(params[:authentication_token])
+        AuthenticationToken.valid.find_by_token(request.headers['Authentication-Token'])
     end
 
     def current_user

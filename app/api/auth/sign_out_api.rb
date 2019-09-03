@@ -9,10 +9,8 @@ module Auth
     end
 
     resource :sign_out do
-      desc 'Sign out'
-
-      params do
-        use :authentication_token
+      desc 'Sign out' do
+        headers GrapeSwaggerRails.options.authentication_token_header_docs
       end
 
       delete do
