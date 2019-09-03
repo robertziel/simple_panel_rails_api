@@ -17,7 +17,7 @@ module ApiAuthHelpers
 
     def current_user
       @current_user ||= begin
-        token = AuthenticationToken.find_by_token(params[:authentication_token])
+        token = AuthenticationToken.valid.find_by_token(params[:authentication_token])
         token ? token.user : false
       end
     end
