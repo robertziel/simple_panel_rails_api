@@ -18,16 +18,6 @@ gem 'grape-swagger'
 gem 'grape-swagger-rails'
 gem 'rack-cors'
 
-# Frontend
-
-gem 'bootstrap', '~> 4.3.1'
-gem 'coffee-rails', '>= 5.0.0'
-gem 'haml', '>= 5.1.1'
-gem 'haml-rails'
-gem 'sass-rails', '>= 5.0'
-gem 'turbolinks', '>= 5'
-gem 'uglifier', '>= 1.3.0'
-
 # Security
 
 gem 'bcrypt', '~> 3.1.12'
