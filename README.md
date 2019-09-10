@@ -5,8 +5,11 @@
 
 # SIMPLE PANEL RAILS API
 
-#### REACT CLIENT repository:
-https://github.com/robertziel/simple_panel_react_client
+Staging: https://simple-panel-rails-backend.robertz.co/api/docs
+
+#### REACT CLIENT:
+Staging: https://simple-panel-react-client.robertz.co
+Repository: https://github.com/robertziel/simple_panel_react_client
 
 #### About service:
 * Grape API: `/api`
@@ -17,7 +20,8 @@ Seed sample user `rake db:seed`:
 * password: `12345678`
 
 #### ENV
-`CORS_ALLOWED_ORIGINS` - if empty `localhost:3000` is used as default
+Set in `.env`:
+* `CORS_ALLOWED_ORIGINS` - if empty `localhost:3000` is used as default
 
 #### User authentication:
 * written from scratch, only `bcrypt` gem is used
