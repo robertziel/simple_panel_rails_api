@@ -21,6 +21,7 @@ gem 'rack-cors'
 # Security
 
 gem 'bcrypt', '~> 3.1.12'
+gem 'dotenv-rails'
 
 group :development do
   gem 'letter_opener'
