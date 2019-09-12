@@ -18,6 +18,10 @@ gem 'grape-swagger'
 gem 'grape-swagger-rails'
 gem 'rack-cors'
 
+# Frontend
+
+gem 'haml'
+
 # Security
 
 gem 'bcrypt', '~> 3.1.12'
