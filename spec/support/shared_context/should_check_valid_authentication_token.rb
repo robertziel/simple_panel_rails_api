@@ -3,7 +3,7 @@ shared_context :should_check_valid_authentication_token do
   let(:token) { authentication_token.token }
 
   before do
-    headers.merge! 'Authentication-Token': token
+    headers.merge! AUTHENTICATION_TOKEN_HEADER => token
   end
 
   context 'when invalid authentication_token' do

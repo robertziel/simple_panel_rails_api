@@ -5,10 +5,3 @@ GrapeSwaggerRails.options.before_action do
 end
 
 GrapeSwaggerRails.options.url = '/api/swagger_doc.json'
-
-GrapeSwaggerRails.options.authentication_token_header_docs = {
-  'Authentication-Token': {
-    description: 'Authentication token',
-    required: true
-  }
-}

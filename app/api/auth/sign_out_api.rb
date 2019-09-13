@@ -1,16 +1,12 @@
 module Auth
-  class SignOutAPI < BaseAPI
-    helpers ApiAuthHelpers
-
-    format :json
-
+  class SignOutAPI < Grape::API
     before do
       authenticate!
     end
 
     resource :sign_out do
       desc 'Sign out' do
-        headers GrapeSwaggerRails.options.authentication_token_header_docs
+        headers ApiDescHelper.with_common_headers
       end
 
       delete do

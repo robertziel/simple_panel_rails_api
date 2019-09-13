@@ -1,6 +1,5 @@
-module ApiAuthHelpers
+module ApiAuthHelper
   extend ActiveSupport::Concern
-  extend Grape::API::Helpers
 
   included do
     include HelperMethods
@@ -8,12 +7,12 @@ module ApiAuthHelpers
 
   module HelperMethods
     def authenticate!
-      error!('Unauthorized. Invalid or expired token.', 401) unless current_user
+      error!(I18n.t('api.helpers.auth.authentication_error'), 401) unless current_user
     end
 
     def current_authentication_token
       @current_authentication_token ||=
-        AuthenticationToken.valid.find_by_token(request.headers['Authentication-Token'])
+        AuthenticationToken.valid.find_by_token(request.headers[AUTHENTICATION_TOKEN_HEADER])
     end
 
     def current_user

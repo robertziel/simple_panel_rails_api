@@ -1,4 +1,9 @@
 class RootAPI < Grape::API
+  helpers ApiAuthHelper
+  include ApiLocaleConcerns
+
+  format :json
+
   namespace :auth do
     mount Auth::SignInAPI
     mount Auth::SignOutAPI

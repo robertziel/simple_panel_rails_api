@@ -1,15 +1,11 @@
-class CurrentUserAPI < BaseAPI
-  helpers ApiAuthHelpers
-
-  format :json
-
+class CurrentUserAPI < Grape::API
   before do
     authenticate!
   end
 
   resource :current_user do
     desc 'Get current_user' do
-      headers GrapeSwaggerRails.options.authentication_token_header_docs
+      headers ApiDescHelper.with_common_headers
     end
 
     get do

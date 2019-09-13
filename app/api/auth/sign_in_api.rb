@@ -1,9 +1,9 @@
 module Auth
-  class SignInAPI < BaseAPI
-    format :json
-
+  class SignInAPI < Grape::API
     resource :sign_in do
-      desc 'Sign in'
+      desc 'Sign in' do
+        headers ApiDescHelper.with_common_headers(auth: false)
+      end
 
       params do
         requires :email, type: String, desc: 'User email'
@@ -19,7 +19,7 @@ module Auth
           { authentication_token: authentication_token.token }
         else
           response_json = {
-            error_message: 'Email or password are wrong'
+            error_message: I18n.t('api.auth.sign_in.email_or_password_wrong')
           }
           error!(response_json, 401)
         end

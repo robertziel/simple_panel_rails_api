@@ -1,0 +1,11 @@
+pl:
+  api:
+    auth:
+      sign_in:
+        email_or_password_wrong: 'Email albo hasło są nieprawidłowe'
+    helpers:
+      auth:
+        authentication_error: 'Błąd autoryzacji.'
+    welcome:
+      message: 'Github: https://github.com/robertziel/simple_panel_rails_backend'
+      title: 'Witam w Sample Panel Rails API'
