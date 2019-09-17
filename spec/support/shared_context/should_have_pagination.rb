@@ -14,10 +14,10 @@ shared_context :should_have_pagination do |model_name|
 
     it 'should include pagination params in documentation' do
       subject
-      params = response.request.env['grape.routing_args'][:route_info].params
-      expect(params['page']).not_to be_nil
-      expect(params['per_page']).not_to be_nil
-      expect(params['offset']).not_to be_nil
+      doc_params = response.request.env['grape.routing_args'][:route_info].params
+      expect(doc_params['page']).not_to be_nil
+      expect(doc_params['per_page']).not_to be_nil
+      expect(doc_params['offset']).not_to be_nil
     end
   end
 end

@@ -31,5 +31,11 @@ shared_context :should_check_valid_authentication_token do
 
       include_examples :should_not_be_authorized
     end
+
+    it "should mark #{AUTHENTICATION_TOKEN_HEADER} header as required in documentation" do
+      subject
+      doc_headers = response.request.env['grape.routing_args'][:route_info].headers
+      expect(doc_headers['Authentication-Token']).not_to be_nil
+    end
   end
 end
