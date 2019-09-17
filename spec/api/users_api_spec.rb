@@ -21,7 +21,7 @@ describe UsersAPI do
       expect(response.status).to eq 200
 
       json = JSON.parse(response.body)
-      expect(json).to eq [user.slice(:email, :id, :username)]
+      expect(json['users']).to eq [user.slice(:email, :id, :username)]
     end
   end
 

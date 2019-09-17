@@ -11,7 +11,10 @@ class UsersAPI < Grape::API
     end
     paginate
     get do
-      paginate(User.select(:email, :id, :username))
+      {
+        count: User.count,
+        users: paginate(User.select(:email, :id, :username))
+      }
     end
 
     desc 'Show' do

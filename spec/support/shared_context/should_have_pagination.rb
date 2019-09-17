@@ -2,14 +2,23 @@
 
 shared_context :should_have_pagination do |model_name|
   context 'should have pagination' do
-    it 'should split results per page' do
-      create_list(model_name, 2)
-      params.merge!(per_page: 1)
+    before do
+      create_list(model_name, 3)
+      params.merge!(per_page: 2)
+    end
 
+    it 'should split results per page' do
       subject
 
       json = JSON.parse(response.body)
-      expect(json.length).to eq 1
+      expect(json[model_name.to_s.pluralize].length).to eq 2
+    end
+
+    it 'should return count' do
+      subject
+
+      json = JSON.parse(response.body)
+      expect(json['count']).to eq model_name.to_s.capitalize.constantize.count
     end
 
     it 'should include pagination params in documentation' do
