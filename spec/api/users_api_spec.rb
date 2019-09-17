@@ -2,14 +2,18 @@ require 'spec_helper'
 
 describe UsersAPI do
   let(:headers) { {} }
+  let(:params) { {} }
+
   let!(:user) { create(:user) }
 
   describe '#INDEX' do
     subject do
-      get '/api/users', headers: headers
+      get '/api/users', params: params, headers: headers
     end
 
     include_context :should_check_valid_authentication_token
+
+    include_context :should_have_pagination, :user
 
     it 'must get index' do
       subject

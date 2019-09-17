@@ -4,12 +4,19 @@ class UsersAPI < Grape::API
   end
 
   resource :users do
-    desc 'Index'
+    include Grape::Kaminari
+
+    desc 'Index' do
+      headers ApiDescHelper.with_common_headers
+    end
+    paginate
     get do
-      User.select(:email, :id, :username).limit(20)
+      paginate(User.select(:email, :id, :username))
     end
 
-    desc 'Show'
+    desc 'Show' do
+      headers ApiDescHelper.with_common_headers
+    end
     params do
       requires :id, type: Integer, desc: 'User id'
     end

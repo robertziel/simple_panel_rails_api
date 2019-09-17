@@ -14,8 +14,10 @@ gem 'puma', '~> 4.0.1'
 # API
 
 gem 'grape'
+gem 'grape-kaminari', github: 'robertziel/grape-kaminari'
 gem 'grape-swagger'
 gem 'grape-swagger-rails'
+gem 'kaminari'
 gem 'rack-cors'
 
 # Frontend
