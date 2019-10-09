@@ -7,11 +7,11 @@
 
 Staging: https://simple-panel-rails-backend.robertz.co/api/docs
 
-#### REACT CLIENT:
+## REACT CLIENT:
 Staging: https://simple-panel-react-client.robertz.co
 Repository: https://github.com/robertziel/simple_panel_react_client
 
-#### About service:
+## About service:
 * Grape API: `/api`
 * Swagger documentation: `/api/docs`
 
@@ -19,11 +19,38 @@ Seed sample user `rake db:seed`:
 * email: `hello@robertz.co`
 * password: `12345678`
 
-#### ENV
+## Docker
+
+Repository contains basic docker setup. depending on needs you can run app locally using both traditional `rails server` or `docker-compose`.
+
+Check this link for more about docker implementation:
+https://docs.docker.com/compose/rails/
+
+1. Build:
+```
+docker-compose build
+```
+
+2. Set up database (run always after migration file added):
+```
+docker-compose run web rake db:create db:migrate db:seed
+```
+
+3. Start containers and check `localhost:8080`:
+```
+docker-compose up
+```
+
+4. Shut down containers:
+```
+docker-compose down
+```
+
+## ENV
 Set in `.env`:
 * `CORS_ALLOWED_ORIGINS` - if empty `localhost:3000` is used as default
 
-#### User authentication:
+## User authentication:
 * written from scratch, only `bcrypt` gem is used
   * based on my previous project:
   https://github.com/robertziel/devise_from_scratch

@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  postgres:
+    container_name: postgres_container
+    environment:
+      POSTGRES_DB: 'rails_server_development'
+    image: postgres
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+  web:
+    build: .
+    container_name: rails_container
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 8080 -b '0.0.0.0'"
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_USERNAME: postgres
+    volumes:
+      - .:/myapp
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
