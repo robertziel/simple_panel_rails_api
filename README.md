@@ -23,6 +23,8 @@ Seed sample user `rake db:seed`:
 
 Repository contains basic docker setup. depending on needs you can run app locally using both traditional `rails server` or `docker-compose`.
 
+Docker compose is set up as default to run locally in **development** environment but can be easily changed for production needs.
+
 Check this link for more about docker implementation:
 https://docs.docker.com/compose/rails/
 
