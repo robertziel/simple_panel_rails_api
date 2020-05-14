@@ -9,6 +9,7 @@ class RootAPI < Grape::API
     mount Auth::SignOutAPI
   end
   mount CurrentUserAPI
+  mount ProfileAPI
   mount UsersAPI
   mount WelcomeAPI
 
