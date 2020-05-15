@@ -8,7 +8,7 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true,
                     format: { with: EMAIL_REGEX,
                               message: 'format is invalid' }
-  validates_length_of :password, minimum: 8, allow_blank: true
+  validates_length_of :password, confirmation: true, minimum: 8, allow_blank: true
   validates :username, presence: true, on: :update
   validates_length_of :username, minimum: 5, on: :update, if: :username_changed?
 

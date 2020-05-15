@@ -15,6 +15,7 @@ describe User do
     end
 
     context '#password' do
+      it { should validate_confirmation_of :password }
       it { should validate_length_of(:password).is_at_least(8) }
     end
 

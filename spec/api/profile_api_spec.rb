@@ -25,7 +25,45 @@ describe ProfileAPI do
 
   describe '#UPDATE' do
     let(:user_attributes) do
-      { email: 'new@email.com', username: 'new_username' }
+      {
+        email: 'new@email.com',
+        username: 'new_username',
+        password: nil,
+        password_confirmation: nil
+      }
+    end
+
+    shared_examples :profile_update_succeeds do
+      context 'succeeds' do
+        it 'should be success' do
+          subject
+          expect(response.status).to eq 200
+        end
+
+        it 'should return new profile data' do
+          subject
+
+          json = JSON.parse(response.body)
+          expect(json['profile']).to eq(
+            user_attributes.except(:password, :password_confirmation).stringify_keys
+          )
+        end
+      end
+    end
+
+    shared_examples :profile_update_failes do
+      context 'failes' do
+        it 'should not succeed' do
+          subject
+          expect(response.status).to eq 401
+        end
+
+        it 'should return error message' do
+          subject
+          json = JSON.parse(response.body)
+          expect(json['error_message']).not_to be_nil
+        end
+      end
     end
 
     subject do
@@ -34,34 +72,31 @@ describe ProfileAPI do
 
     include_context :should_check_valid_authentication_token
 
-    context 'succeeded' do
-      it 'should be success' do
-        subject
-        expect(response.status).to eq 200
-      end
+    include_examples :profile_update_succeeds
 
-      it 'should return new profile data' do
-        subject
-
-        json = JSON.parse(response.body)
-        expect(json['profile']).to eq(user_attributes.stringify_keys)
-      end
-    end
-
-    context 'did not succeeded' do
+    context '#username is nil' do
       before do
         user_attributes[:username] = nil
       end
+      include_examples :profile_update_failes
+    end
 
-      it 'should be unauthorized' do
-        subject
-        expect(response.status).to eq 401
-      end
+    context '#password' do
+      context 'passed' do
+        before do
+          user_attributes[:password] = '12345678'
+        end
 
-      it 'should return error message' do
-        subject
-        json = JSON.parse(response.body)
-        expect(json['error_message']).not_to be_nil
+        context 'without confirmation' do
+          include_examples :profile_update_failes
+        end
+
+        context 'with confirmation' do
+          before do
+            user_attributes[:password_confirmation] = user_attributes[:password]
+          end
+          include_examples :profile_update_succeeds
+        end
       end
     end
   end
