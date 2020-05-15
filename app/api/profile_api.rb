@@ -39,7 +39,7 @@ class ProfileAPI < Grape::API
         { profile: user.as_json(only: %i[email username]) }
       else
         response_json = {
-          error_message: I18n.t('api.auth.sign_in.email_or_password_wrong')
+          error_messages: user.errors.messages.transform_values { |value| value.join(', ') }
         }
         error!(response_json, 401)
       end
