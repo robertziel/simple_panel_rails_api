@@ -61,7 +61,7 @@ describe ProfileAPI do
         it 'should return error message' do
           subject
           json = JSON.parse(response.body)
-          expect(json['error_message']).not_to be_nil
+          expect(json['error_messages']).not_to be_nil
         end
       end
     end
