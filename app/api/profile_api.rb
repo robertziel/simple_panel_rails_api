@@ -4,9 +4,9 @@ class ProfileAPI < Grape::API
   end
 
   resource :profile do
-    include Grape::Kaminari
+    mount AvatarAPI
 
-    desc 'Index' do
+    desc 'Show' do
       headers ApiDescHelper.with_common_headers
     end
     get do
@@ -24,7 +24,6 @@ class ProfileAPI < Grape::API
     end
     post do
       user = current_user
-
       user_attributes = declared(params)
       # remove password from user_attributes if blank
       if user_attributes[:password].blank?
@@ -41,7 +40,7 @@ class ProfileAPI < Grape::API
         response_json = {
           error_messages: user.errors.messages.transform_values { |value| value.join(', ') }
         }
-        error!(response_json, 401)
+        error!(response_json, 200)
       end
     end
   end
