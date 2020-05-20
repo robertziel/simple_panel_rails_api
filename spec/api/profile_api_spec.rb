@@ -6,14 +6,14 @@ describe ProfileAPI do
 
   let!(:user) { create(:user) }
 
-  describe '#INDEX' do
+  describe '#SHOW' do
     subject do
       get '/api/profile', params: params, headers: headers
     end
 
     include_context :should_check_valid_authentication_token
 
-    it 'must get index' do
+    it 'must return user data' do
       subject
 
       expect(response.status).to eq 200
@@ -55,7 +55,7 @@ describe ProfileAPI do
       context 'failes' do
         it 'should not succeed' do
           subject
-          expect(response.status).to eq 401
+          expect(response.status).to eq 200
         end
 
         it 'should return error message' do

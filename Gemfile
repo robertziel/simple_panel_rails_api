@@ -29,6 +29,12 @@ gem 'haml'
 gem 'bcrypt', '~> 3.1.12'
 gem 'dotenv-rails'
 
+# Other
+
+gem 'draper'
+gem 'gravatar_image_tag'
+gem 'mini_magick'
+
 group :development do
   gem 'letter_opener'
   gem 'listen', '>= 3.0.5', '< 3.2'
