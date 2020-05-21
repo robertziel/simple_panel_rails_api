@@ -51,6 +51,7 @@ docker-compose down
 ## ENV
 Set in `.env`:
 * `CORS_ALLOWED_ORIGINS` - if empty `localhost:3000` is used as default
+* `HOST` - subdomain the application is available in
 
 ## User authentication:
 * written from scratch, only `bcrypt` gem is used
