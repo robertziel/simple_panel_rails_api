@@ -2,7 +2,7 @@ class User < ApplicationRecord
   has_one_attached :avatar
   has_secure_password
 
-  has_many :authentication_tokens
+  has_many :authentication_tokens, dependent: :destroy
 
   before_create :set_username
 

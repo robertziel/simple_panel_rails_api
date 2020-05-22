@@ -13,7 +13,10 @@ module Auth
       post do
         user = User.find_by_email(params[:email])
         if user&.authenticate(params[:password])
-          authentication_token = user.authentication_tokens.create!
+          authentication_token = user.authentication_tokens.create!(
+            ip: request.ip,
+            browser: request.env['HTTP_USER_AGENT']
+          )
 
           status 200
           { authentication_token: authentication_token.token }
