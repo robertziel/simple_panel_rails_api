@@ -4,6 +4,10 @@ describe AuthenticationToken do
   let!(:authentication_token) { create(:authentication_token) }
   let(:authentication_token_build) { build(:authentication_token) }
 
+  describe 'associations' do
+    it { should belong_to(:user) }
+  end
+
   describe 'scopes' do
     describe '#valid' do
       subject do

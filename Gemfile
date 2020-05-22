@@ -34,6 +34,7 @@ gem 'dotenv-rails'
 gem 'draper'
 gem 'gravatar_image_tag'
 gem 'mini_magick'
+gem 'active_model_serializers'
 
 group :development do
   gem 'letter_opener'

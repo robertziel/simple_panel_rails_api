@@ -1,10 +1,12 @@
 class RootAPI < Grape::API
   helpers ApiAuthHelper
+  helpers SerializersHelper
   include ApiLocaleConcerns
 
   format :json
 
   namespace :auth do
+    mount Auth::ActiveTokensAPI
     mount Auth::SignInAPI
     mount Auth::SignOutAPI
   end

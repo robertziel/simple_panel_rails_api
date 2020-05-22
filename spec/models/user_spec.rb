@@ -3,6 +3,10 @@ require 'spec_helper'
 describe User do
   let(:user_build) { build(:user) }
 
+  describe 'associations' do
+    it { should have_many(:authentication_tokens).dependent(:destroy) }
+  end
+
   describe 'validations' do
     subject { user_build }
 
