@@ -20,8 +20,8 @@ describe UsersAPI do
 
       expect(response.status).to eq 200
 
-      json = JSON.parse(response.body)
-      expect(json['users']).to eq [user.slice(:email, :id, :username)]
+      json = response_body_to_json
+      expect(json[:users]).to eq [user.slice(:email, :id, :username).symbolize_keys]
     end
   end
 
@@ -37,8 +37,8 @@ describe UsersAPI do
 
       expect(response.status).to eq 200
 
-      json = JSON.parse(response.body)
-      expect(json).to eq user.slice(:email, :id, :username)
+      json = response_body_to_json
+      expect(json).to eq user.slice(:email, :id, :username).symbolize_keys
     end
   end
 end

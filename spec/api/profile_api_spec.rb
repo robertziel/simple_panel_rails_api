@@ -18,8 +18,8 @@ describe ProfileAPI do
 
       expect(response.status).to eq 200
 
-      json = JSON.parse(response.body)
-      expect(json['profile']).to eq user.slice(:email, :username)
+      json = response_body_to_json
+      expect(json[:profile]).to eq user.slice(:email, :username).symbolize_keys
     end
   end
 
@@ -43,9 +43,9 @@ describe ProfileAPI do
         it 'should return new profile data' do
           subject
 
-          json = JSON.parse(response.body)
-          expect(json['profile']).to eq(
-            user_attributes.except(:password, :password_confirmation).stringify_keys
+          json = response_body_to_json
+          expect(json[:profile]).to eq(
+            user_attributes.except(:password, :password_confirmation)
           )
         end
       end
@@ -60,8 +60,8 @@ describe ProfileAPI do
 
         it 'should return error message' do
           subject
-          json = JSON.parse(response.body)
-          expect(json['error_messages']).not_to be_nil
+          json = response_body_to_json
+          expect(json[:error_messages]).not_to be_nil
         end
       end
     end

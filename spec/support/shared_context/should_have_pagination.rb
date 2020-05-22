@@ -10,15 +10,15 @@ shared_context :should_have_pagination do |model_name|
     it 'should split results per page' do
       subject
 
-      json = JSON.parse(response.body)
-      expect(json[model_name.to_s.pluralize].length).to eq 2
+      json = response_body_to_json
+      expect(json[model_name.to_s.pluralize.to_sym].length).to eq 2
     end
 
     it 'should return count' do
       subject
 
-      json = JSON.parse(response.body)
-      expect(json['count']).to eq model_name.to_s.capitalize.constantize.count
+      json = response_body_to_json
+      expect(json[:count]).to eq model_name.to_s.capitalize.constantize.count
     end
 
     it 'should include pagination params in documentation' do

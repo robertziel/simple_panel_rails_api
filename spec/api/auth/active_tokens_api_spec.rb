@@ -25,7 +25,7 @@ describe Auth::ActiveTokensAPI do
 
       it 'returns authentication_token' do
         subject
-        json = JSON.parse(response.body, symbolize_names: true)
+        json = response_body_to_json
         expect(json[:active_tokens]).
           to eq serialize_collection(
             [authentication_token, active_token], serializer: Api::Auth::ActiveTokenSerializer
@@ -41,7 +41,7 @@ describe Auth::ActiveTokensAPI do
 
       it 'returns authentication_token' do
         subject
-        json = JSON.parse(response.body, symbolize_names: true)
+        json = response_body_to_json
         expect(json[:active_tokens]).to eq serialize_collection(
           [authentication_token], serializer: Api::Auth::ActiveTokenSerializer
         )

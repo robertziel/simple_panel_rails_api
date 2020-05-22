@@ -18,8 +18,8 @@ describe ProfileAPI::AvatarAPI do
 
       expect(response.status).to eq 200
 
-      json = JSON.parse(response.body)
-      expect(json['avatar']).to eq user.decorate.avatar_or_default
+      json = response_body_to_json
+      expect(json[:avatar]).to eq user.decorate.avatar_or_default
     end
   end
 
@@ -41,8 +41,8 @@ describe ProfileAPI::AvatarAPI do
 
       expect(response.status).to eq 200
 
-      json = JSON.parse(response.body)
-      expect(json['avatar']).to eq user.decorate.avatar_or_default
+      json = response_body_to_json
+      expect(json[:avatar]).to eq user.decorate.avatar_or_default
     end
   end
 end

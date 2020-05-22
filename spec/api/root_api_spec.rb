@@ -18,8 +18,8 @@ describe WelcomeAPI do
       it "should have locale #{locale}" do
         subject
 
-        json = JSON.parse(response.body)
-        expect(json['locale']).to eq locale.to_s
+        json = response_body_to_json
+        expect(json[:locale]).to eq locale.to_s
       end
     end
 

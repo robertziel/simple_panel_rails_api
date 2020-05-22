@@ -13,8 +13,8 @@ shared_context :should_check_valid_authentication_token do
 
         expect(response.status).to eq 401
 
-        json = JSON.parse(response.body)
-        expect(json['error']).not_to be_nil
+        json = response_body_to_json
+        expect(json[:error]).not_to be_nil
       end
     end
 

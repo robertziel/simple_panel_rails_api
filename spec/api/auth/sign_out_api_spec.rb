@@ -17,8 +17,8 @@ describe Auth::SignOutAPI do
 
       expect(response.status).to eq 200
 
-      json = JSON.parse(response.body)
-      expect(json['success']).to be true
+      json = response_body_to_json
+      expect(json[:success]).to be true
     end
 
     it 'should make authentication_token invalid' do

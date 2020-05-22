@@ -6,8 +6,8 @@ describe WelcomeAPI do
 
     expect(response.status).to eq 200
 
-    json = JSON.parse(response.body)
-    expect(json['title']).not_to be_nil
-    expect(json['message']).not_to be_nil
+    json = response_body_to_json
+    expect(json[:title]).not_to be_nil
+    expect(json[:message]).not_to be_nil
   end
 end

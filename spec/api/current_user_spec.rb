@@ -17,8 +17,8 @@ describe CurrentUserAPI do
 
       expect(response.status).to eq 200
 
-      json = JSON.parse(response.body)
-      expect(json['username']).not_to be_nil
+      json = response_body_to_json
+      expect(json[:username]).not_to be_nil
     end
   end
 end
