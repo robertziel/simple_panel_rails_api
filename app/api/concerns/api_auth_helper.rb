@@ -11,8 +11,13 @@ module ApiAuthHelper
     end
 
     def current_authentication_token
-      @current_authentication_token ||=
-        AuthenticationToken.valid.find_by_token(request.headers[AUTHENTICATION_TOKEN_HEADER])
+      @current_authentication_token ||= begin
+        token = AuthenticationToken.valid.find_by_token(
+          request.headers[AUTHENTICATION_TOKEN_HEADER]
+        )
+        token&.touch(:last_used_at)
+        token
+      end
     end
 
     def current_user

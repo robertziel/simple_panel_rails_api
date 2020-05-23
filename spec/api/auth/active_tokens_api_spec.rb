@@ -28,7 +28,8 @@ describe Auth::ActiveTokensAPI do
         json = response_body_to_json
         expect(json[:authentication_tokens]).
           to eq serialize_collection(
-            [authentication_token, active_token], serializer: Api::Auth::ActiveTokenSerializer
+            [active_token, authentication_token],
+            serializer: Api::Auth::ActiveTokenSerializer
           )
       end
     end

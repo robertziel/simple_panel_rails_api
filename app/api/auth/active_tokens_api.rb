@@ -21,7 +21,8 @@ module Auth
         status 200
         {
           authentication_tokens: serialize_collection(
-            paginate(active_tokens), serializer: Api::Auth::ActiveTokenSerializer
+            paginate(active_tokens.order(:last_used_at)),
+            serializer: Api::Auth::ActiveTokenSerializer
           ),
           count: active_tokens.count
         }

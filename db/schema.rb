@@ -42,8 +42,9 @@ ActiveRecord::Schema.define(version: 2020_05_22_082414) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "expires_at", null: false
-    t.inet "ip", null: false
     t.string "browser"
+    t.inet "ip", null: false
+    t.datetime "last_used_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.index ["token"], name: "index_authentication_tokens_on_token", unique: true
     t.index ["user_id"], name: "index_authentication_tokens_on_user_id"
   end
