@@ -6,20 +6,24 @@ module Auth
 
     helpers do
       def active_tokens
-        current_user.authentication_tokens.valid
+        @active_tokens ||= current_user.authentication_tokens.valid
       end
     end
 
     resource :active_tokens do
-      desc 'Index' do
+      include Grape::Kaminari
+
+      desc 'Active tokens' do
         headers ApiDescHelper.with_common_headers
       end
+      paginate
       get do
         status 200
         {
-          active_tokens: serialize_collection(
-            active_tokens, serializer: Api::Auth::ActiveTokenSerializer
-          )
+          authentication_tokens: serialize_collection(
+            paginate(active_tokens), serializer: Api::Auth::ActiveTokenSerializer
+          ),
+          count: active_tokens.count
         }
       end
 
