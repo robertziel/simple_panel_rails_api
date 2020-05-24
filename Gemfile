@@ -31,6 +31,7 @@ gem 'dotenv-rails'
 
 # Other
 
+gem 'browser'
 gem 'draper'
 gem 'gravatar_image_tag'
 gem 'mini_magick'

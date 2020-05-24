@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Auth::ActiveTokensAPI do
   let!(:user) { create(:user) }
   let!(:user_2) { create(:user) }
-  let!(:active_token) { create(:authentication_token, user: user) }
+  let!(:active_token) { create(:authentication_token, user: user).reload }
   let(:headers) { {} }
 
   describe 'GET index' do
@@ -28,7 +28,7 @@ describe Auth::ActiveTokensAPI do
         json = response_body_to_json
         expect(json[:authentication_tokens]).
           to eq serialize_collection(
-            [active_token, authentication_token],
+            [authentication_token, active_token],
             serializer: Api::Auth::ActiveTokenSerializer
           )
       end

@@ -1,5 +1,5 @@
 shared_context :should_check_valid_authentication_token do
-  let(:authentication_token) { create(:authentication_token, user: user) }
+  let(:authentication_token) { create(:authentication_token, user: user).reload }
   let(:token) { authentication_token.token }
 
   before do
